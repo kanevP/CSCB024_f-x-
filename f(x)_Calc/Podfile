@@ -1,0 +1,16 @@
+# Uncomment this line to define a global platform for your project
+# platform :ios, '6.0'
+
+target 'f(x)_Calc' do
+pod 'Masonry'
+
+end
+
+target 'f(x)_CalcTests' do
+
+end
+
+target 'f(x)_CalcUITests' do
+
+end
+
