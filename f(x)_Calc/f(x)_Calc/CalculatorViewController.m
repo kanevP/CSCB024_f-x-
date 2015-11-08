@@ -14,12 +14,13 @@
 
 @property (strong, nonatomic) UILabel *outputLabel;
 @property (strong, nonatomic) UILabel *inputLabel;
-@property (strong, nonatomic) UITextField *functionInputTextFiel;
 @property (strong, nonatomic) ButtonsPad *buttonsPad;
 
 @end
 
 @implementation CalculatorViewController
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -57,16 +58,6 @@
     }];
     
     [super updateViewConstraints];
-}
-
-- (UITextField *)functionInputTextFiel
-{
-    if (!_functionInputTextFiel) {
-        _functionInputTextFiel = [UITextField new];
-        _functionInputTextFiel.layer.borderColor = [UIColor colorWithRed:145.0/255.0 green:253.0/255.0 blue:250./255.0 alpha:1].CGColor;
-        _functionInputTextFiel.layer.borderWidth = 3;
-    }
-    return _functionInputTextFiel;
 }
 
 - (UILabel *)inputLabel
