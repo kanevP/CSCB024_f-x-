@@ -9,12 +9,13 @@
 /* Begin PBXBuildFile section */
 		0840A4A91BD434E500A7CA84 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0840A4A81BD434E500A7CA84 /* main.m */; };
 		0840A4AC1BD434E500A7CA84 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0840A4AB1BD434E500A7CA84 /* AppDelegate.m */; };
-		0840A4AF1BD434E500A7CA84 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0840A4AE1BD434E500A7CA84 /* ViewController.m */; };
+		0840A4AF1BD434E500A7CA84 /* CalculatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0840A4AE1BD434E500A7CA84 /* CalculatorViewController.m */; };
 		0840A4B21BD434E500A7CA84 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0840A4B01BD434E500A7CA84 /* Main.storyboard */; };
 		0840A4B41BD434E500A7CA84 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0840A4B31BD434E500A7CA84 /* Assets.xcassets */; };
 		0840A4B71BD434E500A7CA84 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0840A4B51BD434E500A7CA84 /* LaunchScreen.storyboard */; };
 		0840A4C21BD434E500A7CA84 /* f_x__CalcTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0840A4C11BD434E500A7CA84 /* f_x__CalcTests.m */; };
 		0840A4CD1BD434E500A7CA84 /* f_x__CalcUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0840A4CC1BD434E500A7CA84 /* f_x__CalcUITests.m */; };
+		08F5448C1BEE477E00F16224 /* ButtonsPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 08F5448B1BEE477E00F16224 /* ButtonsPad.m */; };
 		B23BA4EADC50A1746FA27B6C /* libPods-f(x)_Calc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 552ACDE8FFAE3F4601AF4FAF /* libPods-f(x)_Calc.a */; };
 /* End PBXBuildFile section */
 
@@ -40,8 +41,8 @@
 		0840A4A81BD434E500A7CA84 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0840A4AA1BD434E500A7CA84 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0840A4AB1BD434E500A7CA84 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		0840A4AD1BD434E500A7CA84 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		0840A4AE1BD434E500A7CA84 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		0840A4AD1BD434E500A7CA84 /* CalculatorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalculatorViewController.h; sourceTree = "<group>"; };
+		0840A4AE1BD434E500A7CA84 /* CalculatorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalculatorViewController.m; sourceTree = "<group>"; };
 		0840A4B11BD434E500A7CA84 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0840A4B31BD434E500A7CA84 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0840A4B61BD434E500A7CA84 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -52,6 +53,8 @@
 		0840A4C81BD434E500A7CA84 /* f(x)_CalcUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "f(x)_CalcUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0840A4CC1BD434E500A7CA84 /* f_x__CalcUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = f_x__CalcUITests.m; sourceTree = "<group>"; };
 		0840A4CE1BD434E500A7CA84 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		08F5448A1BEE477E00F16224 /* ButtonsPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonsPad.h; sourceTree = "<group>"; };
+		08F5448B1BEE477E00F16224 /* ButtonsPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonsPad.m; sourceTree = "<group>"; };
 		552ACDE8FFAE3F4601AF4FAF /* libPods-f(x)_Calc.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-f(x)_Calc.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AE7D97C592B290BC24C60D7 /* Pods-f(x)_Calc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-f(x)_Calc.debug.xcconfig"; path = "Pods/Target Support Files/Pods-f(x)_Calc/Pods-f(x)_Calc.debug.xcconfig"; sourceTree = "<group>"; };
 		EF5A3D2EE322CEF7D58DAEF1 /* Pods-f(x)_Calc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-f(x)_Calc.release.xcconfig"; path = "Pods/Target Support Files/Pods-f(x)_Calc/Pods-f(x)_Calc.release.xcconfig"; sourceTree = "<group>"; };
@@ -118,8 +121,10 @@
 			children = (
 				0840A4AA1BD434E500A7CA84 /* AppDelegate.h */,
 				0840A4AB1BD434E500A7CA84 /* AppDelegate.m */,
-				0840A4AD1BD434E500A7CA84 /* ViewController.h */,
-				0840A4AE1BD434E500A7CA84 /* ViewController.m */,
+				0840A4AD1BD434E500A7CA84 /* CalculatorViewController.h */,
+				0840A4AE1BD434E500A7CA84 /* CalculatorViewController.m */,
+				08F5448A1BEE477E00F16224 /* ButtonsPad.h */,
+				08F5448B1BEE477E00F16224 /* ButtonsPad.m */,
 				0840A4B01BD434E500A7CA84 /* Main.storyboard */,
 				0840A4B31BD434E500A7CA84 /* Assets.xcassets */,
 				0840A4B51BD434E500A7CA84 /* LaunchScreen.storyboard */,
@@ -233,6 +238,7 @@
 				TargetAttributes = {
 					0840A4A31BD434E500A7CA84 = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = VB59PVC656;
 					};
 					0840A4BC1BD434E500A7CA84 = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -329,9 +335,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0840A4AF1BD434E500A7CA84 /* ViewController.m in Sources */,
+				0840A4AF1BD434E500A7CA84 /* CalculatorViewController.m in Sources */,
 				0840A4AC1BD434E500A7CA84 /* AppDelegate.m in Sources */,
 				0840A4A91BD434E500A7CA84 /* main.m in Sources */,
+				08F5448C1BEE477E00F16224 /* ButtonsPad.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,10 +480,13 @@
 			baseConfigurationReference = 6AE7D97C592B290BC24C60D7 /* Pods-f(x)_Calc.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "f(x)_Calc/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "NBU.f-x--Calc";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -485,10 +495,13 @@
 			baseConfigurationReference = EF5A3D2EE322CEF7D58DAEF1 /* Pods-f(x)_Calc.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "f(x)_Calc/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "NBU.f-x--Calc";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
