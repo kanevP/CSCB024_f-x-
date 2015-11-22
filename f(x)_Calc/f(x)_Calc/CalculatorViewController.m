@@ -9,6 +9,7 @@
 #import <Masonry.h>
 #import "CalculatorViewController.h"
 #import "ButtonsPad.h"
+#import "FunctionInputView.h"
 
 @interface CalculatorViewController ()<ButtonsPadDelegate>
 
@@ -64,7 +65,9 @@
 {
     if (!_inputLabel) {
         _inputLabel = [UILabel new];
-        _inputLabel.backgroundColor = [UIColor colorWithRed:225.0/255.0 green:249.0/255.0 blue:229.0/255.0 alpha:1];
+//        _inputLabel.backgroundColor = [UIColor colorWithRed:225.0/255.0 green:249.0/255.0 blue:229.0/255.0 alpha:1];
+        _inputLabel.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:.5];
+
     }
     return _inputLabel;
 }
@@ -73,7 +76,8 @@
 {
     if (!_outputLabel) {
         _outputLabel = [UILabel new];
-        _outputLabel.backgroundColor = [UIColor colorWithRed:163.0/255.0 green:225.0/255.0 blue:170.0/255.0 alpha:1];
+//        _outputLabel.backgroundColor = [UIColor colorWithRed:163.0/255.0 green:225.0/255.0 blue:170.0/255.0 alpha:1];
+        _outputLabel.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:.5];
     }
     return _outputLabel;
 }

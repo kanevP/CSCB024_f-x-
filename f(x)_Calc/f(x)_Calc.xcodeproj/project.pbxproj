@@ -15,6 +15,7 @@
 		0840A4B71BD434E500A7CA84 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0840A4B51BD434E500A7CA84 /* LaunchScreen.storyboard */; };
 		0840A4C21BD434E500A7CA84 /* f_x__CalcTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0840A4C11BD434E500A7CA84 /* f_x__CalcTests.m */; };
 		0840A4CD1BD434E500A7CA84 /* f_x__CalcUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0840A4CC1BD434E500A7CA84 /* f_x__CalcUITests.m */; };
+		084ECB251C01EA0C00C232AE /* CalculatorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 084ECB241C01EA0C00C232AE /* CalculatorController.m */; };
 		08F5448C1BEE477E00F16224 /* ButtonsPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 08F5448B1BEE477E00F16224 /* ButtonsPad.m */; };
 		08F5448F1BEFD04400F16224 /* FunctionInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 08F5448E1BEFD04400F16224 /* FunctionInputView.m */; };
 		B23BA4EADC50A1746FA27B6C /* libPods-f(x)_Calc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 552ACDE8FFAE3F4601AF4FAF /* libPods-f(x)_Calc.a */; };
@@ -54,6 +55,8 @@
 		0840A4C81BD434E500A7CA84 /* f(x)_CalcUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "f(x)_CalcUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0840A4CC1BD434E500A7CA84 /* f_x__CalcUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = f_x__CalcUITests.m; sourceTree = "<group>"; };
 		0840A4CE1BD434E500A7CA84 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		084ECB231C01EA0C00C232AE /* CalculatorController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculatorController.h; sourceTree = "<group>"; };
+		084ECB241C01EA0C00C232AE /* CalculatorController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorController.m; sourceTree = "<group>"; };
 		08F5448A1BEE477E00F16224 /* ButtonsPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonsPad.h; sourceTree = "<group>"; };
 		08F5448B1BEE477E00F16224 /* ButtonsPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonsPad.m; sourceTree = "<group>"; };
 		08F5448D1BEFD04400F16224 /* FunctionInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FunctionInputView.h; sourceTree = "<group>"; };
@@ -122,19 +125,15 @@
 		0840A4A61BD434E500A7CA84 /* f(x)_Calc */ = {
 			isa = PBXGroup;
 			children = (
+				084ECB271C02142B00C232AE /* Controller */,
+				084ECB261C01F1D400C232AE /* View */,
 				0840A4AA1BD434E500A7CA84 /* AppDelegate.h */,
 				0840A4AB1BD434E500A7CA84 /* AppDelegate.m */,
-				0840A4AD1BD434E500A7CA84 /* CalculatorViewController.h */,
-				0840A4AE1BD434E500A7CA84 /* CalculatorViewController.m */,
-				08F5448A1BEE477E00F16224 /* ButtonsPad.h */,
-				08F5448B1BEE477E00F16224 /* ButtonsPad.m */,
 				0840A4B01BD434E500A7CA84 /* Main.storyboard */,
 				0840A4B31BD434E500A7CA84 /* Assets.xcassets */,
 				0840A4B51BD434E500A7CA84 /* LaunchScreen.storyboard */,
 				0840A4B81BD434E500A7CA84 /* Info.plist */,
 				0840A4A71BD434E500A7CA84 /* Supporting Files */,
-				08F5448D1BEFD04400F16224 /* FunctionInputView.h */,
-				08F5448E1BEFD04400F16224 /* FunctionInputView.m */,
 			);
 			path = "f(x)_Calc";
 			sourceTree = "<group>";
@@ -163,6 +162,28 @@
 				0840A4CE1BD434E500A7CA84 /* Info.plist */,
 			);
 			path = "f(x)_CalcUITests";
+			sourceTree = "<group>";
+		};
+		084ECB261C01F1D400C232AE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				08F5448A1BEE477E00F16224 /* ButtonsPad.h */,
+				08F5448B1BEE477E00F16224 /* ButtonsPad.m */,
+				08F5448D1BEFD04400F16224 /* FunctionInputView.h */,
+				08F5448E1BEFD04400F16224 /* FunctionInputView.m */,
+				0840A4AD1BD434E500A7CA84 /* CalculatorViewController.h */,
+				0840A4AE1BD434E500A7CA84 /* CalculatorViewController.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		084ECB271C02142B00C232AE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				084ECB231C01EA0C00C232AE /* CalculatorController.h */,
+				084ECB241C01EA0C00C232AE /* CalculatorController.m */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 		DBB4F93F7368591B641DA51E /* Pods */ = {
@@ -345,6 +366,7 @@
 				0840A4AC1BD434E500A7CA84 /* AppDelegate.m in Sources */,
 				0840A4A91BD434E500A7CA84 /* main.m in Sources */,
 				08F5448C1BEE477E00F16224 /* ButtonsPad.m in Sources */,
+				084ECB251C01EA0C00C232AE /* CalculatorController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

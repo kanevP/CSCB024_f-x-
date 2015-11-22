@@ -23,7 +23,8 @@
         [self addSubview:self.functionInputTextFiel];
         [self setNeedsUpdateConstraints];
         
-        self.backgroundColor = [UIColor colorWithRed:129.0/255.0 green:206.0/255.0 blue:120.0/255.0 alpha:1];
+//        self.backgroundColor = [UIColor colorWithRed:129.0/255.0 green:206.0/255.0 blue:120.0/255.0 alpha:1];
+        self.backgroundColor = [UIColor redColor];
     }
     return self;
 }

@@ -68,8 +68,7 @@
 - (UIButton *)buttonForIndex:(NSInteger)index
 {
     UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, [[self buttonWidthForIndex:0] floatValue], [[self buttonWidthForIndex:0] floatValue])];
-    [button setTitle:[self titleForIndex:index] forState:UIControlStateNormal];
-    [button addTarget:self.delegate action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    [self setupForButton:button forIndex:index];
     
     button.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:.1];
     button.layer.borderColor = [UIColor whiteColor].CGColor;
@@ -82,101 +81,142 @@
     
 }
 
-- (NSString *)titleForIndex: (NSInteger)index
+//- (NSString *)titleForIndex:(NSInteger)index
+- (void)setupForButton:(UIButton *)button forIndex:(NSInteger)index
 {
+    button.tag = NSNotFound;
+
     switch (index) {
         case 0:
-            return @"ln";
+            [button setTitle:@"ln" forState:UIControlStateNormal];
+            [button addTarget:self.delegate action:@selector(unaryOperationButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
             break;
         case 1:
-            return @"  ";
+            [button setTitle:@"  " forState:UIControlStateNormal];
             break;
         case 2:
-            return @"0";
+            [button setTitle:@"0" forState:UIControlStateNormal];
+            [button addTarget:self.delegate action:@selector(numberButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+            button.tag = 0;
             break;
         case 3:
-            return @".";
+            [button setTitle:@"." forState:UIControlStateNormal];
+            [button addTarget:self.delegate action:@selector(otherTypeButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
             break;
         case 4:
-            return @"00";
+            [button setTitle:@"00" forState:UIControlStateNormal];
+            [button addTarget:self.delegate action:@selector(numberButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+            button.tag = 10;
             break;
         case 5:
-            return @"=";
+            [button setTitle:@"=" forState:UIControlStateNormal];
+            [button addTarget:self.delegate action:@selector(otherTypeButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
             break;
         case 6:
-            return @"cos";
-            break;
+            [button setTitle:@"cos" forState:UIControlStateNormal];
+            [button addTarget:self.delegate action:@selector(unaryOperationButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+        break;
         case 7:
-            return @"Mod";
+            [button setTitle:@"Mod" forState:UIControlStateNormal];
+            [button addTarget:self.delegate action:@selector(unaryOperationButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
             break;
         case 8:
-            return @"1";
+            [button setTitle:@"1" forState:UIControlStateNormal];
+            button.tag = 1;
+            [button addTarget:self.delegate action:@selector(numberButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
             break;
         case 9:
-            return @"2";
+            [button setTitle:@"2" forState:UIControlStateNormal];
+            button.tag = 2;
+            [button addTarget:self.delegate action:@selector(numberButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
             break;
         case 10:
-            return @"3";
+            [button setTitle:@"3" forState:UIControlStateNormal];
+            button.tag = 3;
+            [button addTarget:self.delegate action:@selector(numberButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
             break;
         case 11:
-            return @"  ";
+            [button setTitle:@"  " forState:UIControlStateNormal];
             break;
         case 12:
-            return @"tan";
+            [button setTitle:@"tan" forState:UIControlStateNormal];
+            [button addTarget:self.delegate action:@selector(unaryOperationButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
             break;
         case 13:
-            return @"x2";
+            [button setTitle:@"x2" forState:UIControlStateNormal];
+            [button addTarget:self.delegate action:@selector(unaryOperationButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
             break;
         case 14:
-            return @"4";
+            [button setTitle:@"4" forState:UIControlStateNormal];
+            [button addTarget:self.delegate action:@selector(numberButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+            button.tag = 4;
             break;
         case 15:
-            return @"5";
+            [button setTitle:@"5" forState:UIControlStateNormal];
+            [button addTarget:self.delegate action:@selector(numberButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+            button.tag = 5;
             break;
         case 16:
-            return @"6";
+            [button setTitle:@"6" forState:UIControlStateNormal];
+            [button addTarget:self.delegate action:@selector(numberButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+            button.tag = 6;
             break;
         case 17:
-            return @"+";
+            [button setTitle:@"+" forState:UIControlStateNormal];
+            [button addTarget:self.delegate action:@selector(binaryOperationButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
             break;
         case 18:
-            return @"sin";
+            [button setTitle:@"sin" forState:UIControlStateNormal];
+            [button addTarget:self.delegate action:@selector(unaryOperationButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
             break;
         case 19:
-            return @"⎷";
+            [button setTitle:@"√" forState:UIControlStateNormal];
+            [button addTarget:self.delegate action:@selector(unaryOperationButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
             break;
         case 20:
-            return @"7";
+            [button setTitle:@"7" forState:UIControlStateNormal];
+            [button addTarget:self.delegate action:@selector(numberButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+            button.tag = 7;
             break;
         case 21:
-            return @"8";
+            [button setTitle:@"8" forState:UIControlStateNormal];
+            [button addTarget:self.delegate action:@selector(numberButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+            button.tag = 8;
             break;
         case 22:
-            return @"9";
+            [button setTitle:@"9" forState:UIControlStateNormal];
+            button.tag = 9;
+            [button addTarget:self.delegate action:@selector(numberButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
             break;
         case 23:
-            return @"-";
+            [button setTitle:@"-" forState:UIControlStateNormal];
+            [button addTarget:self.delegate action:@selector(binaryOperationButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
             break;
         case 24:
-            return @"log";
+            [button setTitle:@"log" forState:UIControlStateNormal];
+            [button addTarget:self.delegate action:@selector(unaryOperationButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
             break;
         case 25:
-            return @"~";
+            [button setTitle:@"~" forState:UIControlStateNormal];
             break;
         case 26:
-            return @"C";
+            [button setTitle:@"C" forState:UIControlStateNormal];
+            [button addTarget:self.delegate action:@selector(otherTypeButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
             break;
         case 27:
-            return @"%";
+            [button setTitle:@"%" forState:UIControlStateNormal];
+            [button addTarget:self.delegate action:@selector(binaryOperationButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
             break;
         case 28:
-            return @"*";
+            [button setTitle:@"*" forState:UIControlStateNormal];
+            [button addTarget:self.delegate action:@selector(binaryOperationButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
             break;
         case 29:
-            return @"/";
+            [button setTitle:@"/" forState:UIControlStateNormal];
+            [button addTarget:self.delegate action:@selector(binaryOperationButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
             break;
         default:
-            return @" ";
+            [button setTitle:@" " forState:UIControlStateNormal];
             break;
     }
 }

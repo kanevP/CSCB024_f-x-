@@ -11,7 +11,10 @@
 
 @protocol ButtonsPadDelegate <NSObject>
 
-- (void)buttonTapped:(UIButton *)button;
+- (void)numberButtonTapped:(UIButton *)button;
+- (void)binaryOperationButtonTapped:(UIButton *)button;
+- (void)unaryOperationButtonTapped:(UIButton *)button;
+- (void)otherTypeButtonTapped:(UIButton *)button;
 
 @end
 
