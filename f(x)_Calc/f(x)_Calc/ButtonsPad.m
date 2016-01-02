@@ -25,6 +25,21 @@
     return self;
 }
 
+- (instancetype)initWithDelegate:(id<ButtonsPadDelegate>)delegate
+{
+    if (self = [super init]) {
+        self.delegate = delegate;
+        
+        self.buttons = [NSMutableArray new];
+        for (int i = 0; i < 30; i++) {
+            [self.buttons addObject:[self buttonForIndex:i]];
+            [self addSubview:self.buttons[i]];
+        }
+        self.backgroundColor = [UIColor redColor];
+        
+    }
+    return self;
+}
 
 - (void)updateConstraints
 {
@@ -219,5 +234,11 @@
             [button setTitle:@" " forState:UIControlStateNormal];
             break;
     }
+//    [button addTarget:self action:@selector(buttonTest) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)buttonTest
+{
+    
 }
 @end

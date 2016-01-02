@@ -23,4 +23,6 @@
 @property (strong, nonatomic) NSMutableArray *buttons;
 @property (weak, nonatomic) id<ButtonsPadDelegate> delegate;
 
+- (instancetype)initWithDelegate:(id<ButtonsPadDelegate>)delegate;
+
 @end

@@ -16,5 +16,6 @@
 @property (weak, nonatomic) UILabel *inputLabel;
 @property (weak, nonatomic) UILabel *outputLabel;
 
+- (instancetype) initWithInputLabels:(UILabel *)inputL andOutPutLabel:(UILabel *)outputL;
 
 @end

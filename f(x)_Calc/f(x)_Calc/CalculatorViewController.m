@@ -10,12 +10,15 @@
 #import "CalculatorViewController.h"
 #import "ButtonsPad.h"
 #import "FunctionInputView.h"
+#import "CalculatorController.h"
 
 @interface CalculatorViewController ()<ButtonsPadDelegate>
 
 @property (strong, nonatomic) UILabel *outputLabel;
 @property (strong, nonatomic) UILabel *inputLabel;
 @property (strong, nonatomic) ButtonsPad *buttonsPad;
+
+@property (strong, nonatomic) CalculatorController *calculatorController;
 
 @end
 
@@ -85,10 +88,18 @@
 - (ButtonsPad *)buttonsPad
 {
     if (!_buttonsPad) {
-        _buttonsPad = [ButtonsPad new];
-        _buttonsPad.delegate = self;
+        _buttonsPad = [[ButtonsPad alloc] initWithDelegate:self.calculatorController];
+//        _buttonsPad.delegate = self.calculatorController;
     }
     return _buttonsPad;
+}
+
+- (CalculatorController *)calculatorController
+{
+    if (!_calculatorController) {
+        _calculatorController = [[CalculatorController alloc] initWithInputLabels:self.inputLabel andOutPutLabel:self.outputLabel];
+    }
+    return _calculatorController;
 }
 
 
