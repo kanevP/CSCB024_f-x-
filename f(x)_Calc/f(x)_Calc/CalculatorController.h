@@ -10,6 +10,11 @@
 #import <UIKit/UIKit.h>
 #import "ButtonsPad.h"
 
+@protocol CalculatorControllerDelegate <NSObject>
+
+- (void)didFinishCalculation;
+
+@end
 
 @interface CalculatorController : NSObject<ButtonsPadDelegate>
 
