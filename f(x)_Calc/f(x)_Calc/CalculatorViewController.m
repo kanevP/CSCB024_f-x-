@@ -29,7 +29,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.layer.contents = (id)[UIImage imageNamed:@"calcu-proj"].CGImage;
+//    self.view.layer.contents = (id)[UIImage imageNamed:@"calcu-proj"].CGImage;
+    self.view.backgroundColor = [UIColor lightGrayColor];
     
     //adding subviews
     [self.view addSubview:self.buttonsPad];

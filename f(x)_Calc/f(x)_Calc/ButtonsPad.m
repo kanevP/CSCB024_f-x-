@@ -120,8 +120,8 @@
             break;
         case 4:
             [button setTitle:@"00" forState:UIControlStateNormal];
-            [button addTarget:self.delegate action:@selector(numberButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
-            button.tag = 10;
+            [button addTarget:self.delegate action:@selector(otherTypeButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+//            button.tag = 10;
             break;
         case 5:
             [button setTitle:@"=" forState:UIControlStateNormal];

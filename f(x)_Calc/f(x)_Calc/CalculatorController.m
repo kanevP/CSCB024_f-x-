@@ -8,12 +8,15 @@
 
 #import "CalculatorController.h"
 
+#define POSITIVE_MULTIPLICATOR 10
+#define NEGATIVE_MULTIPLICATOR 0.1
+
 @interface CalculatorController()
 
 @property (nonatomic) CGFloat currentNumber;
 @property (nonatomic) CGFloat storedNumber;
 @property (nonatomic) CGFloat outputNumber;
-@property (nonatomic) NSInteger multiplicator;
+@property (nonatomic) CGFloat multiplicator;
 
 @property (weak, nonatomic) UIButton *binaryOperationButton;
 
@@ -37,7 +40,7 @@
 - (void)resetNumbers
 {
     _currentNumber = _storedNumber = _outputNumber = 0;
-    self.multiplicator = 10;
+    self.multiplicator = POSITIVE_MULTIPLICATOR;
 }
 
 - (void)nillBinaryOperationNumber
@@ -82,7 +85,7 @@
     }
 }
 
-- (void)setMultiplicator:(NSInteger)multiplicator
+- (void)setMultiplicator:(CGFloat)multiplicator
 {
     _multiplicator = multiplicator;
 }
@@ -104,17 +107,31 @@
         [self resetNumbers];
         self.inputLabel.text = self.outputLabel.text = @"";
     }
+    
+    if ([button.titleLabel.text isEqualToString:@"00"]) {
+        if (self.multiplicator > 0) {
+            self.currentNumber *= 100;
+        }else{
+            
+        }
+        
+        self.currentNumber *= 10*self.multiplicator;
+    }
+    
+    if ([button.titleLabel.text isEqualToString:@"."]) {
+        self.multiplicator = NEGATIVE_MULTIPLICATOR;
+    }
 }
 
 - (void)numberButtonTapped:(UIButton *)button
 {
-    if (self.multiplicator > 0){
+    if (self.multiplicator > 1){
 //        self.multiplicator *= 10;
         _currentNumber *= self.multiplicator;
         self.currentNumber += button.tag;
     }else{
-        self.multiplicator /= 10;
         self.currentNumber += self.multiplicator*button.tag;
+        self.multiplicator /= 10;
     }
 }
 
@@ -206,7 +223,7 @@
     }
     if([button.titleLabel.text isEqualToString:@"-"]){
         operation = ^(CGFloat first, CGFloat second){
-            return first - second;
+            return second - first;
         };
     }
     
@@ -219,7 +236,7 @@
     
     if([button.titleLabel.text isEqualToString:@"%"]){
         operation = ^(CGFloat first, CGFloat second){
-            return (first / second)*100;
+            return (second / 100) * first;
         };
     }
     
