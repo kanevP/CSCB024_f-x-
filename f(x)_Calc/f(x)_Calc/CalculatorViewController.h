@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 
+
+//the class that represents the calculator screen
 @interface CalculatorViewController : UIViewController
 
 

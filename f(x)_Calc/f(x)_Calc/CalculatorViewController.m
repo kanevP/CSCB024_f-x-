@@ -24,8 +24,6 @@
 
 @implementation CalculatorViewController
 
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -39,6 +37,7 @@
     // Do any additional setup after loading the view, typically from a nib.
 }
 
+//layouts the subviews
 - (void)updateViewConstraints
 {
     [self.outputLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -65,6 +64,7 @@
     [super updateViewConstraints];
 }
 
+#pragma mark - Property Accessors
 - (UILabel *)inputLabel
 {
     if (!_inputLabel) {

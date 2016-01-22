@@ -18,6 +18,8 @@
 
 @end
 
+//class containing the visual part of the calculator (the button pad)
+
 @interface ButtonsPad : UIView
 
 @property (strong, nonatomic) NSMutableArray *buttons;

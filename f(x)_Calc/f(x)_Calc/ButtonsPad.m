@@ -41,6 +41,7 @@
     return self;
 }
 
+//layouts the buttons
 - (void)updateConstraints
 {
     for (int i = 0; i < 30; i++) {
@@ -80,6 +81,7 @@
     }
 }
 
+//button factory method
 - (UIButton *)buttonForIndex:(NSInteger)index
 {
     UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, [[self buttonWidthForIndex:0] floatValue], [[self buttonWidthForIndex:0] floatValue])];
@@ -96,7 +98,6 @@
     
 }
 
-//- (NSString *)titleForIndex:(NSInteger)index
 - (void)setupForButton:(UIButton *)button forIndex:(NSInteger)index
 {
     button.tag = NSNotFound;

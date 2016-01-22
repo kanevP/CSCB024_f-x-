@@ -10,6 +10,8 @@
 #import <UIKit/UIKit.h>
 #import "ButtonsPad.h"
 
+
+//the class that contains the calculator logic
 @protocol CalculatorControllerDelegate <NSObject>
 
 - (void)didFinishCalculation;

@@ -24,6 +24,8 @@
 
 @implementation CalculatorController
 
+
+//constructors
 - (instancetype) initWithInputLabels:(UILabel *)inputL andOutPutLabel:(UILabel *)outputL
 {
     if (self = [super init])
@@ -37,27 +39,7 @@
     return self;
 }
 
-- (void)resetNumbers
-{
-    _currentNumber = _storedNumber = _outputNumber = 0;
-    self.multiplicator = POSITIVE_MULTIPLICATOR;
-}
-
-- (void)nillBinaryOperationNumber
-{
-    _binaryOperationButton = [UIButton new];
-}
-
-- (void)constructInputLabelTextForBinaryOperation
-{
-    self.inputLabel.text = [NSString stringWithFormat:@"%.2f %@ %.2f", self.storedNumber, self.binaryOperationButton.titleLabel.text, self.currentNumber];
-}
-
-- (void)appendStringToInputLabel:(NSString *)operationOrNumber
-{
-    self.inputLabel.text = [self.inputLabel.text stringByAppendingString:[NSString stringWithFormat:@" %@", operationOrNumber]];
-}
-
+#pragma mark - property accessors
 - (void)setBinaryOperationButton:(UIButton *)binaryOperationButton
 {
     _binaryOperationButton = binaryOperationButton;
@@ -66,7 +48,6 @@
         [self appendStringToInputLabel:_binaryOperationButton.titleLabel.text];
     }
 }
-
 
 - (void)setOutputNumber:(CGFloat)outputNumber
 {
@@ -89,6 +70,29 @@
 {
     _multiplicator = multiplicator;
 }
+
+#pragma mark - miscelenius
+- (void)resetNumbers
+{
+    _currentNumber = _storedNumber = _outputNumber = 0;
+    self.multiplicator = POSITIVE_MULTIPLICATOR;
+}
+
+- (void)nillBinaryOperationNumber
+{
+    _binaryOperationButton = [UIButton new];
+}
+
+- (void)constructInputLabelTextForBinaryOperation
+{
+    self.inputLabel.text = [NSString stringWithFormat:@"%.2f %@ %.2f", self.storedNumber, self.binaryOperationButton.titleLabel.text, self.currentNumber];
+}
+
+- (void)appendStringToInputLabel:(NSString *)operationOrNumber
+{
+    self.inputLabel.text = [self.inputLabel.text stringByAppendingString:[NSString stringWithFormat:@" %@", operationOrNumber]];
+}
+
 
 #pragma mark #ButtonsPadDelegate
 
@@ -156,6 +160,7 @@
 
 }
 
+// returns a block of code that takes a single parameter to do the calculation for a pressed button
 - (CGFloat (^)(CGFloat))unaryOperationforButton:(UIButton *)button
 {
     CGFloat (^operation)(CGFloat);
@@ -207,6 +212,8 @@
     return operation;
 }
 
+
+//returns a block of code that takes 2 parameterrs to do the calculation for a button
 - (CGFloat (^)(CGFloat, CGFloat))operationForButton:(UIButton*)button
 {
     CGFloat (^operation)(CGFloat, CGFloat);
