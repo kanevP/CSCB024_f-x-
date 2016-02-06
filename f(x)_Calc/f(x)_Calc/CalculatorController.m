@@ -30,7 +30,7 @@
 
 
 //constructors
-- (instancetype) initWithInputLabels:(UILabel *)inputL andOutPutLabel:(UILabel *)outputL
+- (instancetype)initWithInputLabels:(UILabel *)inputL andOutPutLabel:(UILabel *)outputL
 {
     if (self = [super init])
     {
@@ -60,7 +60,13 @@
 {
     _outputNumber = outputNumber;
     NSString *formatted = [self.formatter stringFromNumber:[NSNumber numberWithFloat:_outputNumber]];
-    NSString *newString = [NSString stringWithFormat:@"%@(%@) = %@", self.binaryOperationButton.titleLabel.text, [[OperationsManager sharedInstance] currentOperation], formatted];
+    NSString *newString;
+    if (self.lastOperationIsBinary) {
+       newString  = [NSString stringWithFormat:@"%@ = %@", [[OperationsManager sharedInstance] currentOperation], formatted];
+    }else{
+        newString  = [NSString stringWithFormat:@"%@(%@) = %@", self.binaryOperationButton.titleLabel.text, [[OperationsManager sharedInstance] currentOperation], formatted];
+    }
+    
     [[OperationsManager sharedInstance] updateLastOperation:newString];
     [[OperationsManager sharedInstance] finalizeLastOperation];
     _currentNumber = 0;
@@ -166,7 +172,8 @@
 {
     self.storedNumber = self.currentNumber;
     _currentNumber = 0;
-    
+    self.lastOperationIsBinary = YES;
+
     self.binaryOperationButton = button;
 }
 
@@ -242,7 +249,6 @@
 //returns a block of code that takes 2 parameterrs to do the calculation for a button
 - (CGFloat (^)(double, double))operationForButton:(UIButton*)button
 {
-    self.lastOperationIsBinary = YES;
     CGFloat (^operation)(CGFloat, CGFloat);
 //    [self resetNumbers];
 

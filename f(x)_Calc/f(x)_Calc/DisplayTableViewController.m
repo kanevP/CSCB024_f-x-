@@ -42,6 +42,8 @@
     cell.textLabel.text = [[OperationsManager sharedInstance] operationForIndex:indexPath.row];
     cell.textLabel.backgroundColor = [UIColor clearColor];
     cell.contentView.backgroundColor = [UIColor colorWithRed:206.0/255.0 green:238.0/255.0 blue:217.0/255.0 alpha:1];
+    cell.textLabel.textColor = [UIColor whiteColor];
+    cell.textLabel.font = [UIFont systemFontOfSize:38];
     
     if ([[OperationsManager sharedInstance] totalOperations] < 3) {
         if (indexPath.row == 1) {
