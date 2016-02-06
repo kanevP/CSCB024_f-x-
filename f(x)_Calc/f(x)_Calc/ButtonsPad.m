@@ -18,7 +18,6 @@
             [self.buttons addObject:[self buttonForIndex:i]];
             [self addSubview:self.buttons[i]];
         }
-        self.backgroundColor = [UIColor redColor];
 //        [self setNeedsUpdateConstraints];
         
     }
@@ -35,7 +34,6 @@
             [self.buttons addObject:[self buttonForIndex:i]];
             [self addSubview:self.buttons[i]];
         }
-        self.backgroundColor = [UIColor redColor];
         
     }
     return self;
@@ -209,7 +207,7 @@
             [button addTarget:self.delegate action:@selector(binaryOperationButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
             break;
         case 24:
-            [button setTitle:@"log" forState:UIControlStateNormal];
+            [button setTitle:@"ln" forState:UIControlStateNormal];
             [button addTarget:self.delegate action:@selector(unaryOperationButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
             break;
         case 25:

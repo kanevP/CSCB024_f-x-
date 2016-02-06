@@ -19,9 +19,9 @@
 @end
 
 @interface CalculatorController : NSObject<ButtonsPadDelegate>
-
-@property (weak, nonatomic) UILabel *inputLabel;
-@property (weak, nonatomic) UILabel *outputLabel;
+//
+//@property (weak, nonatomic) UILabel *inputLabel;
+//@property (weak, nonatomic) UILabel *outputLabel;
 
 - (instancetype) initWithInputLabels:(UILabel *)inputL andOutPutLabel:(UILabel *)outputL;
 

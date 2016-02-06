@@ -2,15 +2,16 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "calcu-proj.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "bg1.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "bg2.png",
       "scale" : "3x"
     }
   ],

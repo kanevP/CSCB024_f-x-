@@ -7,18 +7,22 @@
 //
 
 #import "CalculatorController.h"
+#import "OperationsManager.h"
 
 #define POSITIVE_MULTIPLICATOR 10
 #define NEGATIVE_MULTIPLICATOR 0.1
 
 @interface CalculatorController()
 
-@property (nonatomic) CGFloat currentNumber;
-@property (nonatomic) CGFloat storedNumber;
-@property (nonatomic) CGFloat outputNumber;
-@property (nonatomic) CGFloat multiplicator;
+@property (strong, nonatomic) NSNumberFormatter *formatter;
+
+@property (nonatomic) double currentNumber;
+@property (nonatomic) double storedNumber;
+@property (nonatomic) double outputNumber;
+@property (nonatomic) double multiplicator;
 
 @property (weak, nonatomic) UIButton *binaryOperationButton;
+@property (nonatomic) BOOL lastOperationIsBinary;
 
 @end
 
@@ -31,9 +35,12 @@
     if (self = [super init])
     {
         [self resetNumbers];
-        self.inputLabel = inputL;
-        self.outputLabel = outputL;
+//        self.inputLabel = inputL;
+//        self.outputLabel = outputL;
         inputL.text = outputL.text = @"";
+        
+        self.formatter = [NSNumberFormatter new];
+        [self.formatter setNumberStyle:NSNumberFormatterDecimalStyle];
     }
     
     return self;
@@ -44,29 +51,37 @@
 {
     _binaryOperationButton = binaryOperationButton;
     
-    if (_binaryOperationButton) {
+    if (_binaryOperationButton && self.lastOperationIsBinary) {
         [self appendStringToInputLabel:_binaryOperationButton.titleLabel.text];
     }
 }
 
-- (void)setOutputNumber:(CGFloat)outputNumber
+- (void)setOutputNumber:(double)outputNumber
 {
     _outputNumber = outputNumber;
-    self.outputLabel.text = [NSString stringWithFormat:@"%.2f", _outputNumber];
+    NSString *formatted = [self.formatter stringFromNumber:[NSNumber numberWithFloat:_outputNumber]];
+    NSString *newString = [NSString stringWithFormat:@"%@(%@) = %@", self.binaryOperationButton.titleLabel.text, [[OperationsManager sharedInstance] currentOperation], formatted];
+    [[OperationsManager sharedInstance] updateLastOperation:newString];
+    [[OperationsManager sharedInstance] finalizeLastOperation];
+    _currentNumber = 0;
+    [self nillBinaryOperationNumber];
 }
 
-- (void)setCurrentNumber:(CGFloat)currentNumber
+- (void)setCurrentNumber:(double)currentNumber
 {
     _currentNumber = currentNumber;
     
     if (self.binaryOperationButton) {
         [self constructInputLabelTextForBinaryOperation];
     }else{
-        self.inputLabel.text = [NSString stringWithFormat:@"%.2f", _currentNumber];
+        NSString *formatted = [self.formatter stringFromNumber:[NSNumber numberWithFloat:_currentNumber]];
+//        NSString *newString = [NSString stringWithFormat:@"%@ = %@", [[OperationsManager sharedInstance] currentOperation], formatted];
+        [[OperationsManager sharedInstance] updateLastOperation:formatted];
+//        [[OperationsManager sharedInstance] finalizeLastOperation];
     }
 }
 
-- (void)setMultiplicator:(CGFloat)multiplicator
+- (void)setMultiplicator:(double)multiplicator
 {
     _multiplicator = multiplicator;
 }
@@ -85,12 +100,18 @@
 
 - (void)constructInputLabelTextForBinaryOperation
 {
-    self.inputLabel.text = [NSString stringWithFormat:@"%.2f %@ %.2f", self.storedNumber, self.binaryOperationButton.titleLabel.text, self.currentNumber];
+    NSString *storedNumberFormatted = [self.formatter stringFromNumber:[NSNumber numberWithDouble:self.storedNumber]];
+    NSString *currentNumberFormatted = [self.formatter stringFromNumber:[NSNumber numberWithDouble:self.currentNumber]];
+    [[OperationsManager sharedInstance] updateLastOperation:[NSString stringWithFormat:@"%@ %@ %@", storedNumberFormatted, self.binaryOperationButton.titleLabel.text, currentNumberFormatted]];
+//    self.inputLabel.text = [NSString stringWithFormat:@"%@ %@ %@", storedNumberFormatted, self.binaryOperationButton.titleLabel.text, currentNumberFormatted];
 }
 
 - (void)appendStringToInputLabel:(NSString *)operationOrNumber
 {
-    self.inputLabel.text = [self.inputLabel.text stringByAppendingString:[NSString stringWithFormat:@" %@", operationOrNumber]];
+    
+    NSString *newtext = [[[OperationsManager sharedInstance] currentOperation] stringByAppendingString:[NSString stringWithFormat:@" %@", operationOrNumber]];
+    [[OperationsManager sharedInstance] updateLastOperation:newtext];
+    
 }
 
 
@@ -109,12 +130,14 @@
     if ([button.titleLabel.text isEqualToString:@"C"]) {
         [self nillBinaryOperationNumber];
         [self resetNumbers];
-        self.inputLabel.text = self.outputLabel.text = @"";
+//        self.inputLabel.text = self.outputLabel.text = @"";
+        [[OperationsManager sharedInstance] finalizeLastOperation];
     }
     
     if ([button.titleLabel.text isEqualToString:@"00"]) {
         if (self.multiplicator > 0) {
             self.currentNumber *= 100;
+            return;
         }else{
             
         }
@@ -149,62 +172,65 @@
 
 - (void)calculateBinaryOperation
 {
-    CGFloat (^operation)(CGFloat, CGFloat) = [self operationForButton:self.binaryOperationButton];
+    CGFloat (^operation)(double, double) = [self operationForButton:self.binaryOperationButton];
     self.outputNumber = operation(self.currentNumber, self.storedNumber);
 }
 
 - (void)unaryOperationButtonTapped:(UIButton *)button
 {
-    CGFloat (^operation)(CGFloat) = [self unaryOperationforButton:button];
+    CGFloat (^operation)(double) = [self unaryOperationforButton:button];
     self.outputNumber = operation(self.currentNumber);
 
 }
 
 // returns a block of code that takes a single parameter to do the calculation for a pressed button
-- (CGFloat (^)(CGFloat))unaryOperationforButton:(UIButton *)button
+- (CGFloat (^)(double))unaryOperationforButton:(UIButton *)button
 {
-    CGFloat (^operation)(CGFloat);
+//    [self resetNumbers];
+    self.lastOperationIsBinary = NO;
+    self.binaryOperationButton = button;
+    CGFloat (^operation)(double);
     
     if([button.titleLabel.text isEqualToString:@"ln"]){
-        operation = ^(CGFloat first){
+        operation = ^(double first){
             return log(first);
         };
     }
     
     if([button.titleLabel.text isEqualToString:@"cos"]){
-        operation = ^(CGFloat first){
+        operation = ^(double first){
             return cos(first);
         };
     }
     
     if([button.titleLabel.text isEqualToString:@"Mod"]){
-        operation = ^(CGFloat first){
+        operation = ^(double first){
             return first > 0 ? first : -first;
         };
     }
     
     if([button.titleLabel.text isEqualToString:@"tan"]){
-        operation = ^(CGFloat first){
+        operation = ^(double first){
             return tan(first);
         };
     }
     
     if([button.titleLabel.text isEqualToString:@"x2"]){
-        operation = ^(CGFloat first){
+        operation = ^(double first){
             return 2*first;
         };
     }
     
     
     if([button.titleLabel.text isEqualToString:@"sin"]){
-        operation = ^(CGFloat first){
+        operation = ^(double first){
             return sin(first);
         };
     }
     
     
     if([button.titleLabel.text isEqualToString:@"√"]){
-        operation = ^(CGFloat first){
+        operation = ^(double first){
             return sqrt(first);
         };
     }
@@ -214,46 +240,40 @@
 
 
 //returns a block of code that takes 2 parameterrs to do the calculation for a button
-- (CGFloat (^)(CGFloat, CGFloat))operationForButton:(UIButton*)button
+- (CGFloat (^)(double, double))operationForButton:(UIButton*)button
 {
+    self.lastOperationIsBinary = YES;
     CGFloat (^operation)(CGFloat, CGFloat);
-    
+//    [self resetNumbers];
+
     if([button.titleLabel.text isEqualToString:@"*"]){
-        operation = ^(CGFloat first, CGFloat second){
+        operation = ^(double first, double second){
             return first * second;
         };
     }
     if([button.titleLabel.text isEqualToString:@"+"]){
-        operation = ^(CGFloat first, CGFloat second){
+        operation = ^(double first, double second){
             return first + second;
         };
     }
     if([button.titleLabel.text isEqualToString:@"-"]){
-        operation = ^(CGFloat first, CGFloat second){
+        operation = ^(double first, double second){
             return second - first;
         };
     }
     
     if([button.titleLabel.text isEqualToString:@"/"]){
-        operation = ^(CGFloat first, CGFloat second){
+        operation = ^(double first, double second){
             return second / first;
         };
     }
     
     
     if([button.titleLabel.text isEqualToString:@"%"]){
-        operation = ^(CGFloat first, CGFloat second){
+        operation = ^(double first, double second){
             return (second / 100) * first;
         };
     }
-    
-    
-    //
-    //    if([button.titleLabel.text isEqualToString:@"log"]){
-    //        operation = ^(CGFloat first, CGFloat second){
-    //            return log10f(first) / log10f(second);
-    //        };
-    //    }
     
     return operation;
 }

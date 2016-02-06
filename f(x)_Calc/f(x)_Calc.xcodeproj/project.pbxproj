@@ -16,8 +16,9 @@
 		0840A4C21BD434E500A7CA84 /* f_x__CalcTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0840A4C11BD434E500A7CA84 /* f_x__CalcTests.m */; };
 		0840A4CD1BD434E500A7CA84 /* f_x__CalcUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0840A4CC1BD434E500A7CA84 /* f_x__CalcUITests.m */; };
 		084ECB251C01EA0C00C232AE /* CalculatorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 084ECB241C01EA0C00C232AE /* CalculatorController.m */; };
-		089C42751C39860300D580C3 /* DisplayTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 089C42741C39860300D580C3 /* DisplayTableView.m */; };
 		089C42791C39B4A900D580C3 /* DisplayTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 089C42781C39B4A900D580C3 /* DisplayTableViewCell.m */; };
+		08EB2A531C64BC7E00689D92 /* DisplayTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08EB2A521C64BC7E00689D92 /* DisplayTableViewController.m */; };
+		08EB2A571C64BDB900689D92 /* OperationsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 08EB2A561C64BDB900689D92 /* OperationsManager.m */; };
 		08F5448C1BEE477E00F16224 /* ButtonsPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 08F5448B1BEE477E00F16224 /* ButtonsPad.m */; };
 		08F5448F1BEFD04400F16224 /* FunctionInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 08F5448E1BEFD04400F16224 /* FunctionInputView.m */; };
 		B23BA4EADC50A1746FA27B6C /* libPods-f(x)_Calc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 552ACDE8FFAE3F4601AF4FAF /* libPods-f(x)_Calc.a */; };
@@ -59,10 +60,12 @@
 		0840A4CE1BD434E500A7CA84 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		084ECB231C01EA0C00C232AE /* CalculatorController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculatorController.h; sourceTree = "<group>"; };
 		084ECB241C01EA0C00C232AE /* CalculatorController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorController.m; sourceTree = "<group>"; };
-		089C42731C39860300D580C3 /* DisplayTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayTableView.h; sourceTree = "<group>"; };
-		089C42741C39860300D580C3 /* DisplayTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisplayTableView.m; sourceTree = "<group>"; };
 		089C42771C39B4A900D580C3 /* DisplayTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayTableViewCell.h; sourceTree = "<group>"; };
 		089C42781C39B4A900D580C3 /* DisplayTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisplayTableViewCell.m; sourceTree = "<group>"; };
+		08EB2A511C64BC7E00689D92 /* DisplayTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayTableViewController.h; sourceTree = "<group>"; };
+		08EB2A521C64BC7E00689D92 /* DisplayTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisplayTableViewController.m; sourceTree = "<group>"; };
+		08EB2A551C64BDB900689D92 /* OperationsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OperationsManager.h; sourceTree = "<group>"; };
+		08EB2A561C64BDB900689D92 /* OperationsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OperationsManager.m; sourceTree = "<group>"; };
 		08F5448A1BEE477E00F16224 /* ButtonsPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonsPad.h; sourceTree = "<group>"; };
 		08F5448B1BEE477E00F16224 /* ButtonsPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonsPad.m; sourceTree = "<group>"; };
 		08F5448D1BEFD04400F16224 /* FunctionInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FunctionInputView.h; sourceTree = "<group>"; };
@@ -140,6 +143,8 @@
 				0840A4B51BD434E500A7CA84 /* LaunchScreen.storyboard */,
 				0840A4B81BD434E500A7CA84 /* Info.plist */,
 				0840A4A71BD434E500A7CA84 /* Supporting Files */,
+				08EB2A551C64BDB900689D92 /* OperationsManager.h */,
+				08EB2A561C64BDB900689D92 /* OperationsManager.m */,
 			);
 			path = "f(x)_Calc";
 			sourceTree = "<group>";
@@ -173,6 +178,7 @@
 		084ECB261C01F1D400C232AE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				08EB2A541C64BC9000689D92 /* DisplayTVC */,
 				089C42761C39B47700D580C3 /* Display */,
 				08F5448A1BEE477E00F16224 /* ButtonsPad.h */,
 				08F5448B1BEE477E00F16224 /* ButtonsPad.m */,
@@ -196,12 +202,19 @@
 		089C42761C39B47700D580C3 /* Display */ = {
 			isa = PBXGroup;
 			children = (
-				089C42731C39860300D580C3 /* DisplayTableView.h */,
-				089C42741C39860300D580C3 /* DisplayTableView.m */,
 				089C42771C39B4A900D580C3 /* DisplayTableViewCell.h */,
 				089C42781C39B4A900D580C3 /* DisplayTableViewCell.m */,
 			);
 			name = Display;
+			sourceTree = "<group>";
+		};
+		08EB2A541C64BC9000689D92 /* DisplayTVC */ = {
+			isa = PBXGroup;
+			children = (
+				08EB2A511C64BC7E00689D92 /* DisplayTableViewController.h */,
+				08EB2A521C64BC7E00689D92 /* DisplayTableViewController.m */,
+			);
+			name = DisplayTVC;
 			sourceTree = "<group>";
 		};
 		DBB4F93F7368591B641DA51E /* Pods */ = {
@@ -381,10 +394,11 @@
 			files = (
 				0840A4AF1BD434E500A7CA84 /* CalculatorViewController.m in Sources */,
 				089C42791C39B4A900D580C3 /* DisplayTableViewCell.m in Sources */,
-				089C42751C39860300D580C3 /* DisplayTableView.m in Sources */,
+				08EB2A531C64BC7E00689D92 /* DisplayTableViewController.m in Sources */,
 				08F5448F1BEFD04400F16224 /* FunctionInputView.m in Sources */,
 				0840A4AC1BD434E500A7CA84 /* AppDelegate.m in Sources */,
 				0840A4A91BD434E500A7CA84 /* main.m in Sources */,
+				08EB2A571C64BDB900689D92 /* OperationsManager.m in Sources */,
 				08F5448C1BEE477E00F16224 /* ButtonsPad.m in Sources */,
 				084ECB251C01EA0C00C232AE /* CalculatorController.m in Sources */,
 			);

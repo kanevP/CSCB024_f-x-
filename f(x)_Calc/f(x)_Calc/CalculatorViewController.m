@@ -11,13 +11,16 @@
 #import "ButtonsPad.h"
 #import "FunctionInputView.h"
 #import "CalculatorController.h"
+#import "DisplayTableViewController.h"
 
-@interface CalculatorViewController ()<ButtonsPadDelegate>
+#define TABLEVIEW_HEIGHT 200
 
-@property (strong, nonatomic) UILabel *outputLabel;
-@property (strong, nonatomic) UILabel *inputLabel;
+@interface CalculatorViewController ()
+
+@property (strong, nonatomic) UIView *tableViewContainer;
+@property (strong, nonatomic) DisplayTableViewController *childViewController;
+
 @property (strong, nonatomic) ButtonsPad *buttonsPad;
-
 @property (strong, nonatomic) CalculatorController *calculatorController;
 
 @end
@@ -28,30 +31,23 @@
     [super viewDidLoad];
     
 //    self.view.layer.contents = (id)[UIImage imageNamed:@"calcu-proj"].CGImage;
-    self.view.backgroundColor = [UIColor lightGrayColor];
+    self.view.layer.contents = (id)[UIImage imageNamed:@"bgr"].CGImage;
     
     //adding subviews
     [self.view addSubview:self.buttonsPad];
-    [self.view addSubview:self.outputLabel];
-    [self.view addSubview:self.inputLabel];
+    [self.view addSubview:self.tableViewContainer];
+
     // Do any additional setup after loading the view, typically from a nib.
 }
 
 //layouts the subviews
 - (void)updateViewConstraints
 {
-    [self.outputLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.tableViewContainer mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.equalTo(self.view.mas_leading);
         make.trailing.equalTo(self.view.mas_trailing);
-        make.height.equalTo(@80);
-        make.top.equalTo(self.view.mas_top).with.offset(80);
-    }];
-    
-    [self.inputLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.leading.equalTo(self.view.mas_leading);
-        make.trailing.equalTo(self.view.mas_trailing);
-        make.height.equalTo(@80);
-        make.top.equalTo(self.outputLabel.mas_bottom).with.offset(0);
+        make.top.equalTo(self.view.mas_top).with.offset(64);
+        make.height.equalTo(@(TABLEVIEW_HEIGHT));
     }];
     
     [self.buttonsPad mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -65,27 +61,29 @@
 }
 
 #pragma mark - Property Accessors
-- (UILabel *)inputLabel
+- (UIView *)tableViewContainer
 {
-    if (!_inputLabel) {
-        _inputLabel = [UILabel new];
-//        _inputLabel.backgroundColor = [UIColor colorWithRed:225.0/255.0 green:249.0/255.0 blue:229.0/255.0 alpha:1];
-        _inputLabel.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:.5];
-
+    if (!_tableViewContainer) {
+        _tableViewContainer = [UIView new];
+        
+        //adding dispalyTVC as a child VC
+        [self addChildViewController:self.childViewController];
+        [_tableViewContainer addSubview:self.childViewController.view];
+        self.childViewController.view.frame = _tableViewContainer.bounds;
+        [self.childViewController didMoveToParentViewController:self];
     }
-    return _inputLabel;
+    return _tableViewContainer;
 }
 
-- (UILabel *)outputLabel
+- (DisplayTableViewController *)childViewController
 {
-    if (!_outputLabel) {
-        _outputLabel = [UILabel new];
-//        _outputLabel.backgroundColor = [UIColor colorWithRed:163.0/255.0 green:225.0/255.0 blue:170.0/255.0 alpha:1];
-        _outputLabel.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:.5];
+    if (!_childViewController) {
+        _childViewController = [DisplayTableViewController new];
+        [OperationsManager sharedInstance].delegate = _childViewController;
     }
-    return _outputLabel;
+    
+    return _childViewController;
 }
-
 - (ButtonsPad *)buttonsPad
 {
     if (!_buttonsPad) {
@@ -98,7 +96,8 @@
 - (CalculatorController *)calculatorController
 {
     if (!_calculatorController) {
-        _calculatorController = [[CalculatorController alloc] initWithInputLabels:self.inputLabel andOutPutLabel:self.outputLabel];
+        _calculatorController = [[CalculatorController alloc] initWithInputLabels:nil
+                                                                   andOutPutLabel:nil];
     }
     return _calculatorController;
 }
