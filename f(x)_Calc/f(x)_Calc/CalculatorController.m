@@ -137,7 +137,7 @@
         [self nillBinaryOperationNumber];
         [self resetNumbers];
 //        self.inputLabel.text = self.outputLabel.text = @"";
-        [[OperationsManager sharedInstance] finalizeLastOperation];
+        [[OperationsManager sharedInstance] updateLastOperation:@""];
     }
     
     if ([button.titleLabel.text isEqualToString:@"00"]) {
@@ -205,40 +205,40 @@
     }
     
     if([button.titleLabel.text isEqualToString:@"cos"]){
-        operation = ^(double first){
-            return cos(first);
+        operation = ^(double number){
+            return cos(number / 180 * M_PI);
         };
     }
     
     if([button.titleLabel.text isEqualToString:@"Mod"]){
-        operation = ^(double first){
-            return first > 0 ? first : -first;
+        operation = ^(double number){
+            return number > 0 ? number : -number;
         };
     }
     
     if([button.titleLabel.text isEqualToString:@"tan"]){
-        operation = ^(double first){
-            return tan(first);
+        operation = ^(double number){
+            return tan(number / 180 * M_PI);
         };
     }
     
     if([button.titleLabel.text isEqualToString:@"x2"]){
-        operation = ^(double first){
-            return 2*first;
+        operation = ^(double number){
+            return 2*number;
         };
     }
     
     
     if([button.titleLabel.text isEqualToString:@"sin"]){
-        operation = ^(double first){
-            return sin(first);
+        operation = ^(double number){
+            return sin(number / 180 * M_PI);
         };
     }
     
     
     if([button.titleLabel.text isEqualToString:@"√"]){
-        operation = ^(double first){
-            return sqrt(first);
+        operation = ^(double number){
+            return sqrt(number);
         };
     }
     

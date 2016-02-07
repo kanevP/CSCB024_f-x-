@@ -51,10 +51,11 @@
     }];
     
     [self.buttonsPad mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.tableViewContainer.mas_bottom);
         make.bottom.equalTo(self.view.mas_bottom).with.offset(-10);
         make.leading.equalTo(self.view.mas_leading).with.offset(10);
         make.trailing.equalTo(self.view.mas_trailing).with.offset(-10);
-        make.height.equalTo(@330);
+//        make.height.equalTo(@330);
     }];
     
     [super updateViewConstraints];

@@ -73,9 +73,9 @@
 - (NSNumber *)buttonWidthForIndex:(NSInteger)index
 {
     if (index%6 == 5) {
-        return @30;
+        return @80;
     }else{
-        return @((CGRectGetWidth([UIScreen mainScreen].bounds) - 20 - 30 - 30)/5);
+        return @((CGRectGetWidth([UIScreen mainScreen].bounds) - 20 - 30 - 80)/5);
     }
 }
 
@@ -86,8 +86,9 @@
     [self setupForButton:button forIndex:index];
     
     button.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:.1];
+    [button setBackgroundImage:[self imageWithColor:[[UIColor whiteColor] colorWithAlphaComponent:.5]] forState:UIControlStateHighlighted];
     button.layer.borderColor = [UIColor whiteColor].CGColor;
-    button.layer.borderWidth = 4;
+    button.layer.borderWidth = 2;
     
     button.layer.cornerRadius = 8;
     button.layer.masksToBounds = YES;
@@ -233,11 +234,24 @@
             [button setTitle:@" " forState:UIControlStateNormal];
             break;
     }
-//    [button addTarget:self action:@selector(buttonTest) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)buttonTest
 {
     
+}
+
+- (UIImage *)imageWithColor:(UIColor *)color {
+    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
 }
 @end
